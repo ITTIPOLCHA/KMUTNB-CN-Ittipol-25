@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>คำนวณภาษี</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<navbar-component></navbar-component>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">Login to use</h1>
+  <button  class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>
+</header>
+
+<div class="w3-row-padding w3-padding-64 w3-container w3-light-grey">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>รายได้เท่าไหร่ต้องเสียภาษี</h1>
+      <h3 class="w3-padding-32"><u class="w3-text-orange">
+        กรณีมนุษย์เงินเดือน</u> – รายได้เงินเดือนเกินกว่า 310,000 บาท ต่อปี หรือ 25,833.33 บาท ต่อเดือน<br><u class="w3-text-red">คิดเเบบ PIT</u><br><br><u class="w3-text-orange">กรณีบุคคลธรรมดาที่ประกอบธุรกิจส่วนตัว</u> – รายได้จากการประกอบธุรกิจที่เกินกว่า 525,000 บาท ต่อปี หรือ 43,750 บาท ต่อเดือน<br><u class="w3-text-red">คิดเเบบ PIT เเต่จะคิดเเค่ 60%</u><br><br><u class="w3-text-orange">กรณีนิติบุคคล</u> – ขึ้นอยู่กับความสามารถในการทำกำไร กรณีที่เป็นนิติบุคคล SME หากกำไรทางภาษีไม่เกิน 3 แสนก็ไม่ต้องเสียภาษี แต่หากเป็นนิติบุคคลที่ไม่ใช่ SME ถ้าขาดทุนไม่ต้องเสียภาษี แต่หากมีกำไรตั้งแต่บาทแรกก็ต้องเริ่มเสียภาษี เพราะไม่ได้รับการยกเว้นครับ<br><u class="w3-text-red">คิดเเบบ CIT</u></h3>
+    </div>
+  </div>
+</div>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>ภาษีบุคคลธรรมดา(PIT)</h1>
+      <h3 class="w3-padding-32"> สำหรับมนุษย์เงินเดือนที่มีรายได้หรือทำธุรกิจส่วนตัว ปกติการยื่นแบบแสดงรายการ จะยื่นปีละ 1 ครั้ง (ยื่นแบบฯ ภายในวันที่ 31 มีนาคม ของปีถัดไป) แต่ถ้าเงินได้บางลักษณะ เช่น การให้เช่าทรัพย์สิน เงินได้จากวิชาชีพอิสระ เงินได้จากการรับเหมา เงินได้จากธุรกิจ การพาณิชย์ เป็นต้น จะต้องยื่นแบบฯ ตอนกลางปี (สำหรับเงินได้ที่เกิดขึ้นใน 6 เดือนแรก ภายในเดือนกันยายนของทุกปี)</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container ">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>ภาษีนิติบุคคล(CIT)</h1>
+      <h3 class="w3-padding-32">ปกติแล้วนิติบุคคลจากเสียภาษีจากฐานกำไรสุทธิ ดังนั้นหากมีกำไรมากก็จะเสียภาษีมาก หากมีกำไรน้อยก็จะเสียภาษีน้อยลงตามไปด้วย<br><br><u class="w3-text-deep-orange">กรณีที่เป็นนิติบุคคล SME</u> (รายได้ไม่เกิน 30 ล้าน และทุนจดทะเบียนชำระแล้วไม่เกิน 5 ล้านบาท) กำไร 3 แสนแรกได้รับการยกเว้นภาษี กำไร 3 แสน ถึง 3 ล้าน จะเสียภาษีในอัตรา 15% กำไรส่วนที่เกิน 3 ล้านบาทขึ้นไป จะเสียภาษีในอัตรา 20%<br><br><u class="w3-text-deep-orange">กรณีนิติบุคคลที่ไม่ใช่ SME</u> เสียภาษีจากฐานกำไรสุทธิในอัตรา 20% สรุปตามแผนภาพได้ดังนี้</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer-component></footer-component>
+
+<script src="navbar.js"></script>
+<script src  ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17  a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"crossorigin="anonymous"></script>
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

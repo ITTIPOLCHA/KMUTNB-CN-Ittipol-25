@@ -1,7 +1,7 @@
 fn main() {
     //let text = "this cat this bat this rat";
     println!("this cat this bat this rat");
-    let result = words("this cat this bat this rat");
+    let _result = words("this cat this bat this rat");
 }
 
 fn words(text: &str) -> i32{
@@ -36,8 +36,8 @@ fn words(text: &str) -> i32{
         y += 1;
     }
     println!("{:?}",word);
-    let result = unique(word);
-    result
+    let _result = unique(word);
+    _result
 }
 
 fn unique(_word: Vec<&str>) -> i32{
@@ -50,17 +50,17 @@ fn unique(_word: Vec<&str>) -> i32{
 
     }
     println!("{:?}",w);
-    let result = count(w);
-    result
+    let _result = count(w);
+    _result
 }
 
 fn count(w: Vec<&str>) -> i32{
-    let mut result = 0;
+    let mut _result = 0;
     for _b in w {
-        result += 1;
+        _result += 1;
     }
-    println!("{}",result);
-    result
+    println!("{}",_result);
+    _result
 }
 
 #[cfg(test)]
