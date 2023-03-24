@@ -1,6 +1,6 @@
 use actix_web::{get, Responder, HttpResponse};
 
-use crate::models::tax::{Tax};
+use crate::models::tax::Tax;
 
 
 #[get("/tax")]

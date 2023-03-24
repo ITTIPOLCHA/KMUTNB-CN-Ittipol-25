@@ -4,7 +4,7 @@ use env_logger::Env;
 pub mod routes;
 mod handlers;
 mod models;
-use crate::routes::{tax_routes, pit_routes};
+use crate::routes::*;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -16,6 +16,9 @@ async fn main() -> std::io::Result<()> {
             .wrap(middleware::Logger::default())
             .configure(tax_routes::config)
             .configure(pit_routes::config)
+            .configure(cit_routes::config)
+            .configure(vat_routes::config)
+            .configure(history_routes::config)
    })
    .bind("0.0.0.0:8080")?
    .run()
