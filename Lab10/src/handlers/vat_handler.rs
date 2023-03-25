@@ -1,29 +1,22 @@
 use actix_web::{get, post, web, Responder, HttpResponse};
-use serde::{Deserialize, Serialize};
 use log::{debug, info};
 use serde_json::json;
 
-use crate::models::vat::Vat;
-
-#[derive(Debug, Serialize, Deserialize)]
-struct DATA {
-  types: String,
-  product_name: String,
-  product_price: i32,
-  service_name: String,
-  service_price: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct InputVat {
-  user_id: i32,
-  data: DATA,
-}
+use crate::models::vat::{ Vat, InputVat, ResVat};
 
 #[get("/tax/vat")]
 async fn get_vat() -> impl Responder {
+    info!("get vat");
+    debug!("get: ✅");
     let url = "https://private-f5d89-ittipolcha.apiary-mock.com/tax/vat";
-    let response = reqwest::get(url).await.unwrap().json::<Vec<Vat>>().await.unwrap();
+
+    let response = reqwest::get(url)
+        .await
+        .unwrap()
+        .json::<Vat>()
+        .await
+        .unwrap();
+
     HttpResponse::Ok().json(response)
 }
 
@@ -48,14 +41,6 @@ async fn post_vat(data: web::Json<InputVat>) -> impl Responder {
     }
 
     let _ra = "2015-08-05T08:40:51.620Z";
-
-    #[derive(Serialize, Deserialize)]
-    struct ResVat {
-        vat: String,
-        net_income: i32,
-        price: i32,
-        response_at: String,
-    }
 
     let res_vat = ResVat {
         vat: _vat.to_string(),

@@ -1,9 +1,11 @@
 use actix_web::web;
-use crate::handlers::vat_handler::{get_vat, post_vat} ;
+use crate::handlers::vat_handler::*;
 
 
-pub fn config(cfg: &mut web::ServiceConfig) {
+pub fn config( cfg: &mut web::ServiceConfig ){
+
     cfg
-        .service(get_vat)
-        .service(post_vat);
+        .service( get_vat )
+        .service( post_vat );
+
 }

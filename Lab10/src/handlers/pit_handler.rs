@@ -1,42 +1,23 @@
 use actix_web::{get, post, web, Responder, HttpResponse};
-use serde::{Deserialize, Serialize};
 use log::{debug, info};
 use serde_json::json;
 
-use crate::models::pit::Pit;
-
-#[derive(Debug, Serialize, Deserialize)]
-struct AI {
-  forty_1: i32,
-  forty_2: i32,
-  forty_3: i32,
-  forty_4: i32,
-  forty_5: i32,
-  forty_6: i32,
-  forty_7: i32,
-  forty_8: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct DChoice {
-  personal: i32,
-  child_per_person: i32,
-  parent_per_person: i32,
-  disabled: i32,
-  pregnancy_childbirth: i32,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-struct InputPit {
-  user_id: i32,
-  assessable_income: AI,
-  deductible: DChoice,
-}
+use crate::models::pit::{ Pit, InputPit, ResPit};
 
 #[get("/tax/pit")]
 async fn get_pit() -> impl Responder {
+    info!("get pit");
+    debug!("get: ✅");
+
     let url = "https://private-f5d89-ittipolcha.apiary-mock.com/tax/pit";
-    let response = reqwest::get(url).await.unwrap().json::<Vec<Pit>>().await.unwrap();
+
+    let response = reqwest::get(url)
+        .await
+        .unwrap()
+        .json::<Pit>()
+        .await
+        .unwrap();
+
     HttpResponse::Ok().json(response)
 }
 
@@ -144,21 +125,6 @@ async fn post_pit(data: web::Json<InputPit>) -> impl Responder {
     }
     else {
         _rc = "ladder_personal_income_tax";
-    }
-
-    #[derive(Serialize, Deserialize)]
-    struct ResPit {
-        assessable_income: i32,
-        forty_1: i32,
-        expenses: i32,
-        net_income: i32,
-        tax_reduction: i32,
-        deductible_assessable_income: i32,
-        tax_rate: String,
-        individual_income_tax: i32,
-        ladder_personal_income_tax: i32,
-        recommend_choosing: String,
-        response_at: String,
     }
 
     let _ra = "2015-08-05T08:40:51.620Z";

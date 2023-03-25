@@ -1,12 +1,31 @@
-use actix_web::{web, get, Responder, HttpResponse};
+use actix_web::{ web, get, Responder, HttpResponse};
+use log::{debug, info};
 
-use crate::models::history::{User};
+use crate::models::history::History;
 
 
-#[get("/history")]
-async fn get_history() -> impl Responder {
-    let url = "https://private-f5d89-ittipolcha.apiary-mock.com/history/user_id";
-    let response = reqwest::get(url).await.unwrap().json::<Vec<User>>().await.unwrap();
+#[get("/history/{user_id}")]
+async fn get_history(_user_id: web::Path<i32>) -> impl Responder {
+    info!("get history");
 
-    HttpResponse::Ok().json(response)
+    let url = format!("https://private-f5d89-ittipolcha.apiary-mock.com/history/{}", _user_id);
+
+    let response = reqwest::get(&url)
+        .await
+        .unwrap()
+        .json::<History>()
+        .await
+        .unwrap();
+
+    let _user_id = _user_id.into_inner() as i32;
+    
+    if response.user_id == _user_id {
+        debug!("get: ✅");
+        HttpResponse::Ok().json(response)
+    }
+    else {
+        debug!("get: ❌");
+        HttpResponse::NotFound().body("User ID not found")
+    }
+
 }

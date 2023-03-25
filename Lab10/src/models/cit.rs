@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+// get
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Cit {
   question: String,
@@ -14,6 +15,8 @@ pub struct BusinessChoice {
   expenses: Option<String>,
 }
 
+// post
+/// request
 #[derive(Debug, Serialize, Deserialize)]
 pub struct DATA {
   pub types: String,
@@ -26,4 +29,11 @@ pub struct DATA {
 pub struct InputCit {
   pub user_id: i32,
   pub data: DATA,
+}
+
+/// response
+#[derive(Serialize, Deserialize)]
+pub struct ResCit {
+  pub tax_value: i32,
+  pub response_at: String,
 }

@@ -1,15 +1,23 @@
 use actix_web::{get, post, web, Responder, HttpResponse};
-use serde::{Deserialize, Serialize};
 use log::{debug, info};
 use serde_json::json;
 
-use crate::models::cit::{Cit, InputCit};
-
+use crate::models::cit::{Cit, InputCit, ResCit};
 
 #[get("/tax/cit")]
 async fn get_cit() -> impl Responder {
+    info!("get cit");
+    debug!("get: ✅");
+
     let url = "https://private-f5d89-ittipolcha.apiary-mock.com/tax/cit";
-    let response = reqwest::get(url).await.unwrap().json::<Vec<Cit>>().await.unwrap();
+
+    let response = reqwest::get(url)
+      .await
+      .unwrap()
+      .json::<Cit>()
+      .await
+      .unwrap();
+
     HttpResponse::Ok().json(response)
 }
 
@@ -39,12 +47,6 @@ async fn post_cit(data: web::Json<InputCit>) -> impl Responder {
     }
 
     let _ra = "2015-08-05T08:40:51.620Z";
-
-    #[derive(Serialize, Deserialize)]
-    struct ResCit {
-      tax_value: i32,
-      response_at: String,
-    }
 
     let res_cit = ResCit {
       tax_value: _np,

@@ -1,12 +1,13 @@
-use serde::{Deserialize, Serialize};
+use serde::{ Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Deserialize)]
+// Get
+#[derive( Debug, Serialize, Deserialize)]
 pub struct Vat {
   question: String,
   choices: Vec<VatChoice>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive( Debug, Serialize, Deserialize)]
 pub struct VatChoice {
   choice: String,
   product_name: Option<String>,
@@ -15,17 +16,28 @@ pub struct VatChoice {
   service_price: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+// Post
+/// Request
+#[derive( Debug, Serialize, Deserialize)]
 pub struct DATA {
-  types: String,
-  product_name: String,
-  product_price: i32,
-  service_name: String,
-  service_price: i32,
+  pub types: String,
+  pub product_name: String,
+  pub product_price: i32,
+  pub service_name: String,
+  pub service_price: i32,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive( Debug, Serialize, Deserialize)]
 pub struct InputVat {
-  user_id: i32,
-  data: DATA,
+  pub user_id: i32,
+  pub data: DATA,
+}
+
+/// Response
+#[derive(Serialize, Deserialize)]
+pub struct ResVat {
+  pub vat: String,
+  pub net_income: i32,
+  pub price: i32,
+  pub response_at: String,
 }
