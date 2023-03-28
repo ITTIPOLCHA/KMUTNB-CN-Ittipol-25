@@ -4,7 +4,7 @@ use log::{debug, info};
 use crate::models::feature::{TaxMenu, UpdateRequest, TaxResponse};
 
 
-#[get("/feature/{user_id}")]
+#[get("/feature/admin/{user_id}")]
 async fn get_feature(_user_id: web::Path<i32>) -> impl Responder {
     info!("get feature");
     let url = format!("https://private-f5d89-ittipolcha.apiary-mock.com/feature/{}", _user_id);
@@ -33,7 +33,7 @@ async fn get_feature(_user_id: web::Path<i32>) -> impl Responder {
 
 }
 
-#[patch("/feature/{user_id}")]
+#[patch("/feature/admin/{user_id}")]
 async fn patch_feature(_user_id: web::Path<i32>, data: web::Json<UpdateRequest>) -> impl Responder {
     info!("patch feature");
 
@@ -55,7 +55,7 @@ async fn patch_feature(_user_id: web::Path<i32>, data: web::Json<UpdateRequest>)
     }
 }
 
-#[delete("/feature/{user_id}")]
+#[delete("/feature/admin/{user_id}")]
 async fn delete_feature(_user_id: web::Path<i32>) -> impl Responder {
     info!("delete feature");
 

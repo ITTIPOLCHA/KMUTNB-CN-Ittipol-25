@@ -11,6 +11,5 @@ pub struct TaxChoice {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Tax {
     pub question: String,
-    pub published_at: String,
     pub choices: Vec<TaxChoice>,
 }
